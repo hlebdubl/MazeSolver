@@ -29,4 +29,20 @@ public class Move {
         }
         return count >= 2;
     }
+    private boolean deadEnd(String[][] maze, int row, int col){
+        int count = 0;
+        if(moveDown(maze, row, col)){
+            count++;
+        }
+        if(moveUp(maze, row, col)){
+            count++;
+        }
+        if(moveLeft(maze, row, col)){
+            count++;
+        }
+        if(moveRight(maze, row, col)){
+            count++;
+        }
+        return count == 1;
+    }
 }

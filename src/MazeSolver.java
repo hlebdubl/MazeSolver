@@ -9,7 +9,6 @@ public class MazeSolver {
     private ArrayList<String> currentPath = new ArrayList<String>();
 
 
-
     public String[][] getGameMaze() {
         return gameMaze;
     }
@@ -41,32 +40,24 @@ public class MazeSolver {
             }
         }
         return maze;
-
     }
 
+    String end = "(" + (gameMaze.length - 1) + "," + gameMaze[gameMaze.length -1].length + ")";
+
+    Move moving = new Move();
+
+    public ArrayList<String> mazeSolve(){
+        for(int i = 0 ; i < gameMaze.length; i ++){
+
+        }
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return currentPath;
+    }
 
 
 
