@@ -6,8 +6,6 @@ import java.util.Scanner;
 public class MazeSolver {
 
     private String[][] gameMaze = getMaze("src/maze");
-    private ArrayList<String> currentPath = new ArrayList<String>();
-
 
     public String[][] getGameMaze() {
         return gameMaze;
@@ -42,24 +40,24 @@ public class MazeSolver {
         return maze;
     }
 
-    String end = "(" + (gameMaze.length - 1) + "," + gameMaze[gameMaze.length -1].length + ")";
+    public static boolean solveMaze(String[][] maze, int r, int c, boolean[][] visited, ArrayList<String> path) {
+        int rows = maze.length;
+        int cols = maze[0].length;
 
-    Move moving = new Move();
-
-    public ArrayList<String> mazeSolve(){
-        for(int i = 0 ; i < gameMaze.length; i ++){
-
+        if (r < 0 || c < 0 || r >= rows || c >= cols || maze[r][c].equals("#") || visited[r][c]) {
+            return false;
         }
 
+        visited[r][c] = true;
+        path.add("(" + r + ", " + c + ")");
 
-
-
-
-
-        return currentPath;
+        if (r == rows - 1 && c == cols - 1) {
+            return true;
+        }
+        if (solveMaze(maze, r - 1, c, visited, path) || solveMaze(maze, r + 1, c, visited, path) || solveMaze(maze, r, c - 1, visited, path) || solveMaze(maze, r, c + 1, visited, path)) {
+            return true;
+        }
+        path.remove(path.size() - 1);
+        return false;
     }
-
-
-
-
 }
